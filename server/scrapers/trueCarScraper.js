@@ -30,7 +30,7 @@ const trueCarScraper = async (make, model, minYear, zip) => {
         const url = `truecar.com${$(el).find('a').attr('href')}`;
         // console.log('title ele', titleElement, 'end');
         vehicleObj.price = Number(priceElement.text().replace(/\D/g, ''));
-        vehicleObj.image = 'https://cdn.motor1.com/images/mgl/1Zz3jK/s1/lamborghini-huracan-tecnica.jpg';
+        vehicleObj.image = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
         vehicleObj.mileage = Number(mileageElement.text().replace(/\D/g, ''));
         [ vehicleObj.year, vehicleObj.make, vehicleObj.model ] = titleElement.text().split(' ')
         vehicleObj.year = Number(vehicleObj.year);

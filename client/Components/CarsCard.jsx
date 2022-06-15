@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function CarsCard(props) {
-  console.log('hi1')
-  console.log('hi car price')
+  // console.log('hi1')
+  // console.log('hi car price')
   
   return (
 
