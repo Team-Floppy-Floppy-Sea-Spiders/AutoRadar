@@ -6,7 +6,7 @@ export default function Wishlist() {
     const [wishList, setWishList] = useState([]);
 
     useEffect(() => {
-        // fetch('/wishlist')
+        // fetch('/api/wishlist')
         //     .then(data => data.json())
         //     .then(data => setWishList(data))
         //     .catch(err => console.log('Error in Wishlist.jsx', err));

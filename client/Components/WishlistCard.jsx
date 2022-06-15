@@ -8,7 +8,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 export default function WishlistCard(props) {
 
     function deleteWishlist() {
-        fetch(`/wishlist/${props.id}`, {
+        fetch(`/api/wishlist/${props.id}`, {
             method: 'DELETE',
         })
             .then(data => data.json())
