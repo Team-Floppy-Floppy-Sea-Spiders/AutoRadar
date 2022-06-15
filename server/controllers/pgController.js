@@ -22,21 +22,21 @@ pgController.getAutoTraderData = async (req, res, next) => {
   res.locals.autoTraderData = await autoTraderScraper(make, model, minYear, zip);
  
   return next();
- }
+}
 
- pgController.getCarGurusData = async (req, res, next) => {
+pgController.getCarGurusData = async (req, res, next) => {
   const { make, model, minYear, zip } = req.params;
   res.locals.carGurusData = await carGurusScraper(make, model, minYear, zip);
  
   return next();
- }
+}
 
- pgController.getTrueCarData = async (req, res, next) => {
+pgController.getTrueCarData = async (req, res, next) => {
   const { make, model, minYear, zip } = req.params;
   res.locals.trueCarData = await trueCarScraper(make, model, minYear, zip);
  
   return next();
- }
+}
 
 // pgController.getCarGuruData = (req, res, next) => {
 //   const { make, model, minYear, zip } = req.body;
