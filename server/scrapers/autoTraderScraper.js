@@ -17,7 +17,7 @@ const autoTraderScraper = async (make, model, minYear, zip) => {
         const vehicleObj = {};
         const priceElement = $(el).find('.first-price');
         const mileageElement = $(el).find('.item-card-specifications').find('.text-bold');
-        console.log($(el).find('a').find('div').html());
+        // console.log($(el).find('a').find('div').html());
         // const image = $(el).find('.padding-0 > .row > .item-card > .col-xs-12 > .positioned-overlay > .positioned-overlay-wrapper > .positioned-overlay-base > a > div > img').attr('src') ? 
         //         $(el).find('.padding-0 > .row > .item-card > .col-xs-12 > .positioned-overlay > .positioned-overlay-wrapper > .positioned-overlay-base > a > div > img').attr('src')
         //         : '' ;
@@ -26,7 +26,7 @@ const autoTraderScraper = async (make, model, minYear, zip) => {
         const url = `autotrader.com${$(el).find('a').attr('href')}`;
         // console.log('are we here?', priceElement, mileageElement, image, titleElement, url)
         vehicleObj.price = Number(priceElement.text().replace(/\D/g, ''));
-        vehicleObj.image = 'https://media.nbclosangeles.com/2021/10/Uber_StarCars_PRHero_SB_STREET_16x9-01.png?fit=1920%2C1080&quality=85&strip=all';
+        vehicleObj.image = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
         vehicleObj.mileage = Number(mileageElement.text().replace(/\D/g, ''));
         vehicleObj.year = Number(titleElement.text().split(' ').slice(0, 4).join('').replace(/\D/g, '')); // [2015, Honda, Civic, LX]
         vehicleObj.model = model;
