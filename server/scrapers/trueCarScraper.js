@@ -45,7 +45,7 @@ const trueCarScraper = async (make, model, minYear, zip) => {
 
 // cheerioScrapeCarsCom is working perfectly
  await cheerioScrapeTrueCar(`https://www.truecar.com/used-cars-for-sale/listings/${make}/${model}/year-${minYear}-max/location-${zip}/?sort[]=price_asc`);
- console.log('cars', cars, 'end cars')
+//  console.log('cars', cars, 'end cars')
  
  return cars.slice(3);
 }

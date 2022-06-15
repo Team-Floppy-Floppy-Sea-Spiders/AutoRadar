@@ -22,7 +22,7 @@ export default function CarsList(props) {
     <List
       sx={{
         width: '100%',
-        maxWidth: 500,
+        maxWidth: 1000,
         bgcolor: 'background.paper',
         position: 'relative',
         overflow: 'auto',
@@ -35,7 +35,7 @@ export default function CarsList(props) {
       display: "flex",
       justifyContent: 'center',
         padding: '10px 0',
-        maxWidth: 500,
+        maxWidth: 1000,
         border: '1px solid #e0e0e0',
         boxShadow: '0px 11px 10px -7px rgba(194,194,194,0.66)'
     }}>

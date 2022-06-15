@@ -17,6 +17,7 @@ const autoTraderScraper = async (make, model, minYear, zip) => {
         const vehicleObj = {};
         const priceElement = $(el).find('.first-price');
         const mileageElement = $(el).find('.item-card-specifications').find('.text-bold');
+        console.log($(el).find('a').find('div').html());
         // const image = $(el).find('.padding-0 > .row > .item-card > .col-xs-12 > .positioned-overlay > .positioned-overlay-wrapper > .positioned-overlay-base > a > div > img').attr('src') ? 
         //         $(el).find('.padding-0 > .row > .item-card > .col-xs-12 > .positioned-overlay > .positioned-overlay-wrapper > .positioned-overlay-base > a > div > img').attr('src')
         //         : '' ;
@@ -43,7 +44,7 @@ const autoTraderScraper = async (make, model, minYear, zip) => {
 
 // cheerioScrapeCarsCom is working perfectly
  await cheerioScraperAutoTrader(`https://www.autotrader.com/cars-for-sale/all-cars/${make.toLowerCase()}/${model.toLowerCase()}/${zip}?searchRadius=50&startYear=${minYear}&sortBy=derivedpriceASC&numRecords=50`);
- console.log('cars', cars, 'end cars')
+//  console.log('cars', cars, 'end cars')
  
  return cars.slice(3);
 }
