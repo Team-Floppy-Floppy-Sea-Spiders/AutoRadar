@@ -13,7 +13,7 @@ export default function Wishlist() {
         
         setWishList([
         {
-            price: 50000.,
+            price: 50000,
             image: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/2017_Honda_Civic_SR_VTEC_1.0_Front.jpg',
             mileage: 2000,
             year: 2012,
