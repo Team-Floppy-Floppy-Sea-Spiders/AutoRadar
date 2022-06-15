@@ -11,13 +11,14 @@ export default function CarsCard(props) {
   
   return (
 
-    <Card sx={{ maxWidth: 450 }}>
+    <Card sx={{ width: 1000 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
           image={props.carObj.image ? props.carObj.image :"https://static.wikia.nocookie.net/0b6408dc-ead8-42d9-a639-94068519d635/scale-to-width/755"}
           alt="car photo"
+          fullWidth
         />
         <CardContent sx={{
           display: 'grid',

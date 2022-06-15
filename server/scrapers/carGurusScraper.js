@@ -43,7 +43,7 @@ const carGurusScraper = async (make, model, minYear, zip) => {
 
 // cheerioScrapeCarsCom is working perfectly
  await cheerioScraperCarGurus(`https://www.cargurus.com/Cars/l-Used-${make.toLowerCase()}-${model.toLowerCase()}-d586_L22933?zip=${zip}`);
- console.log('cars', cars, 'end cars')
+//  console.log('cars', cars, 'end cars')
  
  return cars;
 }
