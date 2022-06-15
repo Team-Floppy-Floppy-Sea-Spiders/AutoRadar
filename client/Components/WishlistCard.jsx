@@ -6,85 +6,135 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function WishlistCard(props) {
-
-    function deleteWishlist() {
-        fetch(`/api/wishlist/${props.id}`, {
-            method: 'DELETE',
-        })
-            .then(data => data.json())
-            .then(data => console.log('Wishlist item deleted: ', data))
-            .catch(err => 'Error in delete request in WishlistCard.jsx', err)
-    }
+  function deleteWishlist() {
+    console.log(
+      'this is in wishlistcard props',
+      props,
+      'this is also props._id',
+      props.carObj._id
+    );
+    props.setDeleted(props.deleted + 1);
+    fetch(`/api/wishlist/${props.carObj._id}`, {
+      method: 'DELETE',
+    })
+      .then((data) => data.json())
+      .then((data) => console.log('Wishlist item deleted: ', data))
+      .catch((err) =>
+        console.log('Error in delete request in WishlistCard.jsx', err)
+      );
+    console.log(
+      'this is supposed to be props.deleted',
+      props.deleted,
+      'also props.set'
+    );
+  }
 
   return (
-
     <Card sx={{ width: 1000 }}>
+      <Button
+        sx={{
+          float: 'right',
+          color: 'red',
+          fontSize: '20px',
+          border: '1px solid red',
+        }}
+      >
+        <div onClick={deleteWishlist} target='_blank' rel='noreferrer noopener'>
+          X
+        </div>
+      </Button>
 
-        <Button sx={{float: 'right', color: 'red', fontSize: '20px', border: '1px solid red'}}>
-            <div onClick={deleteWishlist} target="_blank" rel="noreferrer noopener">X</div>
-        </Button>
-    
       <CardActionArea>
         <CardMedia
-          component="img"
-          height="300"
-          image={props.carObj.image ? props.carObj.image :"https://static.wikia.nocookie.net/0b6408dc-ead8-42d9-a639-94068519d635/scale-to-width/755"}
-          alt="car photo"
-        //   fullWidth
+          component='img'
+          height='300'
+          image={
+            props.carObj.image
+              ? props.carObj.image
+              : 'https://static.wikia.nocookie.net/0b6408dc-ead8-42d9-a639-94068519d635/scale-to-width/755'
+          }
+          alt='car photo'
+          //   fullWidth
         />
-        <CardContent sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gridTemplateRows: 'repeat(4,1fr)',
-          alignItems: 'center',
-          justifyItems: 'space-arond',
-          columnGap: 4
-        }}>
-          <Typography 
+        <CardContent
           sx={{
-            gridColumn: '1/2',
-            gridRow: '1/4',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gridTemplateRows: 'repeat(4,1fr)',
+            alignItems: 'center',
+            justifyItems: 'space-arond',
+            columnGap: 4,
           }}
-          gutterBottom variant="h4" component="div">
+        >
+          <Typography
+            sx={{
+              gridColumn: '1/2',
+              gridRow: '1/4',
+            }}
+            gutterBottom
+            variant='h4'
+            component='div'
+          >
             {/* {console.log('car make', props.carObj.make)} */}
-            {`${props.carObj.make.charAt(0).toUpperCase()+props.carObj.make.slice(1)} ${props.carObj.model.charAt(0).toUpperCase()+props.carObj.model.slice(1)}`}
+            {`${
+              props.carObj.make.charAt(0).toUpperCase() +
+              props.carObj.make.slice(1)
+            } ${
+              props.carObj.model.charAt(0).toUpperCase() +
+              props.carObj.model.slice(1)
+            }`}
           </Typography>
-          <Typography sx={{
-            gridColumn: '2/3',
-            gridRow: '1/2'
-          }}
-          variant="h5" color="text.secondary">
+          <Typography
+            sx={{
+              gridColumn: '2/3',
+              gridRow: '1/2',
+            }}
+            variant='h5'
+            color='text.secondary'
+          >
             {`$${props.carObj.price}`}
           </Typography>
-          <Typography 
-          sx={{
-            gridColumn: '2/3',
-            gridRow: '2/3'
-          }}
-          variant="body2" color="text.secondary">
+          <Typography
+            sx={{
+              gridColumn: '2/3',
+              gridRow: '2/3',
+            }}
+            variant='body2'
+            color='text.secondary'
+          >
             {`${props.carObj.mileage} mileage`}
           </Typography>
-          <Typography 
-          sx={{
-            gridColumn: '2/3',
-            gridRow: '3/4'
-          }}
-          variant="body2" color="text.secondary">
+          <Typography
+            sx={{
+              gridColumn: '2/3',
+              gridRow: '3/4',
+            }}
+            variant='body2'
+            color='text.secondary'
+          >
             {`Year: ${props.carObj.year}`}
           </Typography>
-          <Typography 
-          sx={{
-            gridColumn: '2/3',
-            gridRow: '4/5'
-          }}
-          variant="body2" color="text.secondary">
+          <Typography
+            sx={{
+              gridColumn: '2/3',
+              gridRow: '4/5',
+            }}
+            variant='body2'
+            color='text.secondary'
+          >
             {`ZIP: ${props.carObj.zip}`}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          <a href={`https://www.${props.carObj.url}`} target="_blank" rel="noreferrer noopener">Check in the website</a>
+        <Button size='small' color='primary'>
+          <a
+            href={`https://www.${props.carObj.url}`}
+            target='_blank'
+            rel='noreferrer noopener'
+          >
+            Check in the website
+          </a>
         </Button>
       </CardActions>
     </Card>
