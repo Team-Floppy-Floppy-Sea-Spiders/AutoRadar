@@ -2,7 +2,7 @@ import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListSubheader from '@mui/material/ListSubheader';
-import CarsCard from './CarsCard';
+import WishlistCard from './WishlistCard';
 import Typography from '@mui/material/Typography';
 
 export default function CarsList(props) {
@@ -12,8 +12,8 @@ export default function CarsList(props) {
   
   props.carsArr.forEach(
     (car, ind) => {
-      carsItems.push(<ListItem key={`CarsList: ${ind}`}>
-        <CarsCard carObj={car}/>
+      carsItems.push(<ListItem key={`WishlistCard: ${ind}`}>
+        <WishlistCard carObj={car}/>
       </ListItem>)
     }
   )
