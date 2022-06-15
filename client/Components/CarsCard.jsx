@@ -4,10 +4,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import {Button as MantineButton} from '@mantine/core'
 
 export default function CarsCard(props) {
   // console.log('hi1')
   // console.log('hi car price')
+
+  function addWishList() {
+    fetch('/api/wishlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(props.carObj)
+    }).then(response => response.json())
+      .then((data) => console.log('Success!'))
+      .catch((error) => {
+        console.log('Error!')
+      })
+    console.log(props.carObj);
+  }
   
   return (
 
@@ -74,6 +90,9 @@ export default function CarsCard(props) {
         <Button size="small" color="primary">
           <a href={`https://www.${props.carObj.url}`} target="_blank" rel="noreferrer noopener">Check in the website</a>
         </Button>
+        <MantineButton onClick={addWishList}>
+          Add to wishlist!
+        </MantineButton>
       </CardActions>
     </Card>
   );
