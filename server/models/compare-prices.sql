@@ -32,17 +32,17 @@ CREATE TABLE public.cars (
 );
 
 -- CREATE TABLE public.prices (
---     "_id" serial NOT NULL,
---     "year" integer NOT NULL,
---     "date" DATE NOT NULL,
---     "price" integer NOT NULL,
---     "mileage" integer NOT NULL,
---     "url" varchar NOT NULL,
---     "car_id" bigint NOT NULL,
---     CONSTRAINT "prices_pk" PRIMARY KEY ("_id")
--- ) WITH (
---     OIDS=FALSE
--- );
+--      "_id" serial NOT NULL,
+--      "year" integer NOT NULL,
+--      "date" DATE NOT NULL,
+--      "price" integer NOT NULL,
+--      "mileage" integer NOT NULL,
+--      "url" varchar NOT NULL,
+--      "car_id" bigint NOT NULL,
+--      CONSTRAINT "prices_pk" PRIMARY KEY ("_id")
+--  ) WITH (
+--      OIDS=FALSE
+--  );
 
 
 -- ALTER TABLE public.prices ADD CONSTRAINT "cars_fk0" FOREIGN KEY ("car_id") REFERENCES public.cars("_id");
