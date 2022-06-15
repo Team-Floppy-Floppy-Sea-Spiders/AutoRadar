@@ -5,20 +5,32 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function CarsCard(props) {
-  console.log('hi1')
-  console.log('hi car price')
-  
+export default function WishlistCard(props) {
+
+    function deleteWishlist() {
+        fetch(`/wishlist/${props.id}`, {
+            method: 'DELETE',
+        })
+            .then(data => data.json())
+            .then(data => console.log('Wishlist item deleted: ', data))
+            .catch(err => 'Error in delete request in WishlistCard.jsx', err)
+    }
+
   return (
 
     <Card sx={{ width: 1000 }}>
+
+        <Button sx={{float: 'right', color: 'red', fontSize: '20px', border: '1px solid red'}}>
+            <div onClick={deleteWishlist} target="_blank" rel="noreferrer noopener">X</div>
+        </Button>
+    
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
           image={props.carObj.image ? props.carObj.image :"https://static.wikia.nocookie.net/0b6408dc-ead8-42d9-a639-94068519d635/scale-to-width/755"}
           alt="car photo"
-          // fullWidth
+        //   fullWidth
         />
         <CardContent sx={{
           display: 'grid',

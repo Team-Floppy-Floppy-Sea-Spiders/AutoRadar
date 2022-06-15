@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const MainContainer = () => {
@@ -20,8 +20,8 @@ const MainContainer = () => {
             <Link to="/">
               <Tab label="Home Page" />
             </Link>
-            <Link to={'/trends'}>
-              <Tab label="Trends" />
+            <Link to={'/wishlist'}>
+              <Tab label="Wishlist" />
             </Link>
           </Tabs>
         </Box>

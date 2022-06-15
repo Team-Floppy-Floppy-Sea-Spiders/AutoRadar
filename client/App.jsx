@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 // import Trends from './containers/Trends';
 import CarsInfo from './containers/CarsInfo';
 import SearchBar from './Components/SearchBar';
+import Wishlist from './containers/Wishlist';
 
 const App = () => {
     const [carsCom, setCarsCom] = useState([]);
@@ -61,10 +62,12 @@ const App = () => {
                 </div>
             }
             />
-            {/* <Route
-                exact path="/trends"
-                element={<Trends />}
-            /> */}
+            <Route
+                exact path="/wishlist"
+                element={
+                <Wishlist />
+            }
+            />
         </Routes>
     </div>
 )};
