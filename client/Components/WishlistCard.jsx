@@ -6,13 +6,8 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function WishlistCard(props) {
+  
   function deleteWishlist() {
-    console.log(
-      'this is in wishlistcard props',
-      props,
-      'this is also props._id',
-      props.carObj._id
-    );
     props.setDeleted(props.deleted + 1);
     fetch(`/api/wishlist/${props.carObj._id}`, {
       method: 'DELETE',
@@ -22,11 +17,6 @@ export default function WishlistCard(props) {
       .catch((err) =>
         console.log('Error in delete request in WishlistCard.jsx', err)
       );
-    console.log(
-      'this is supposed to be props.deleted',
-      props.deleted,
-      'also props.set'
-    );
   }
 
   return (

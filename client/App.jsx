@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import MainContainer from './containers/MainContainer'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 // import Trends from './containers/Trends';
 import CarsInfo from './containers/CarsInfo';
 import SearchBar from './Components/SearchBar';
 import Wishlist from './containers/Wishlist';
+import Login from './Components/Login';
 
 const App = () => {
     const [carsCom, setCarsCom] = useState([]);
@@ -15,6 +16,7 @@ const App = () => {
     const [year, setYear] = useState(2022);
     const [zip, setZip] = useState(10001);
     const [modelList, setModelList] = useState([]);
+    let user = false;
 
     console.log('make:', make, 'modelList:', modelList);
     const updateMake = (e) => {
@@ -74,12 +76,12 @@ const App = () => {
     
     return (
     <div id='app'>
-        <MainContainer />
         <Routes>
             <Route
-                exact path="/"
+                exact path="/home"
                 element={
                 <div>
+                    <MainContainer />
                     <SearchBar 
                       updateMake={updateMake}
                       updateYear={updateYear}
@@ -99,10 +101,21 @@ const App = () => {
             />
             <Route
                 exact path="/wishlist"
-                element={
-                <Wishlist />
-            }
+                element={ user ? 
+              <div>
+                <MainContainer />
+                <Wishlist /> 
+              </div>   
+                : <Login />
+              }
             />
+
+            <Route
+                exact path="/"
+                element={ user ? <Navigate to='/home'/> : <Login />
+              }
+            />
+
         </Routes>
     </div>
 )};
