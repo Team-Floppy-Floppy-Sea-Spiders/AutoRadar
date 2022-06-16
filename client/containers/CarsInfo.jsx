@@ -41,10 +41,7 @@ export default function CarsInfo({carsCom, autoTrader, trueCar}) {
         { value: 'yearoldest', label: 'Year - Oldest' },
       ]}
     />   
-    <div style={{
-      display: 'flex',
-      justifyContent: 'space-evenly'
-    }}>
+    <div className='cars-info-div1'>
       <CarsList carsArr={allCarCards} name={'Car Listing'}/>
     </div>
     </>
