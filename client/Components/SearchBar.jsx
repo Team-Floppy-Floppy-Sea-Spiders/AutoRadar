@@ -18,6 +18,7 @@ export default function SearchBar({
   return (
     <Box
       component='form'
+      className='search-bar-box1'
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
         display: 'flex',

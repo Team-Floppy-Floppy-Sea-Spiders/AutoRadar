@@ -1,13 +1,22 @@
 import React from 'react';
 import { Button } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons';
-
+import cover from '../assets/cover.png';
+import defaultPic from '../assets/default.png';
+import profile from '../assets/profile.png';
 
 const Login = () => {
     return (
-        <div className='login-div1' style={{height: '100%', display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center', border: '1px solid black'}}>
-            <div className='login-div2' style={{}}>
-                LOGIN:
+        <>
+
+        <div className='login-div1'>
+            <div className='login-div2'>
+            <img src={defaultPic}></img>
+
+            {/* <Button variant="white" color="gray">
+                Login    
+            </Button> */}
+
             </div>
 
             <Button
@@ -35,7 +44,7 @@ const Login = () => {
                 Login via GitHub
             </Button>
         </div>
-
+        </>
     )
 }
 
