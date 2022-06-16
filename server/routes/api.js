@@ -10,13 +10,11 @@ router.get(
   pgController.getTrueCarData,
   pgController.getAutoTraderData,
   (req, res) =>
-    res
-      .status(200)
-      .json({
-        carsComData: res.locals.carsComData,
-        trueCarData: res.locals.trueCarData,
-        autoTraderData: res.locals.autoTraderData,
-      })
+    res.status(200).json({
+      carsComData: res.locals.carsComData,
+      trueCarData: res.locals.trueCarData,
+      autoTraderData: res.locals.autoTraderData,
+    })
 );
 
 // router to POST to wishlist once user clicks on the favorites icon

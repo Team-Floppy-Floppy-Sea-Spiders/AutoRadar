@@ -5,19 +5,23 @@ import ListSubheader from '@mui/material/ListSubheader';
 import WishlistCard from './WishlistCard';
 import Typography from '@mui/material/Typography';
 
-export default function CarsList(props) {
-  console.log('carsArr', props)
+export default function WishlistCardsList(props) {
+  console.log('carsArr', props);
 
-  const carsItems = []; 
-  
-  props.carsArr.forEach(
-    (car, ind) => {
-      carsItems.push(<ListItem key={`WishlistCard: ${ind}`}>
-        <WishlistCard carObj={car}/>
-      </ListItem>)
-    }
-  )
-  
+  const carsItems = [];
+
+  props.carsArr.forEach((car, ind) => {
+    carsItems.push(
+      <ListItem key={`WishlistCard: ${ind}`}>
+        <WishlistCard
+          carObj={car}
+          setDeleted={props.setDeleted}
+          deleted={props.deleted}
+        />
+      </ListItem>
+    );
+  });
+
   return (
     <List
       sx={{
@@ -31,26 +35,32 @@ export default function CarsList(props) {
       }}
       subheader={<li />}
     >
-    <ListSubheader sx={{
-      display: "flex",
-      justifyContent: 'center',
-        padding: '10px 0',
-        maxWidth: 1000,
-        border: '1px solid #e0e0e0',
-        boxShadow: '0px 11px 10px -7px rgba(194,194,194,0.66)'
-    }}>
-      <Typography variant="h4" sx={{
-        color: 'black'
-      }}>
-        {props.name}
-      </Typography>
-    </ListSubheader>
-    {[carsItems]}
+      <ListSubheader
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '10px 0',
+          maxWidth: 1000,
+          border: '1px solid #e0e0e0',
+          boxShadow: '0px 11px 10px -7px rgba(194,194,194,0.66)',
+        }}
+      >
+        <Typography
+          variant='h4'
+          sx={{
+            color: 'black',
+          }}
+        >
+          {props.name}
+        </Typography>
+      </ListSubheader>
+      {[carsItems]}
     </List>
   );
 }
 
-{/* {[0, 1, 2, 3, 4].map((sectionId) => (
+{
+  /* {[0, 1, 2, 3, 4].map((sectionId) => (
         <li key={`section-${sectionId}`}>
           <ul>
             <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
@@ -61,4 +71,5 @@ export default function CarsList(props) {
             ))}
           </ul>
         </li>
-      ))} */}
+      ))} */
+}
