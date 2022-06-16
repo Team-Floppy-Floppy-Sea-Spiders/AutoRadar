@@ -45,7 +45,8 @@ module.exports = {
         proxy: {
           '/api' : 'http://localhost:3000',
           // '/' : 'http://localhost:3000/images/'
-        }
+        },
+        historyApiFallback: true,
      },
      resolve: {
       extensions: ['.js', '.json', '.jsx'],

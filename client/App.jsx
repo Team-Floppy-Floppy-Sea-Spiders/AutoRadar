@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import MainContainer from './containers/MainContainer'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // import Trends from './containers/Trends';
 import CarsInfo from './containers/CarsInfo';
 import SearchBar from './Components/SearchBar';
 import Wishlist from './containers/Wishlist';
+import Login from './Components/Login';
 
 const App = () => {
     const [carsCom, setCarsCom] = useState([]);
@@ -15,8 +16,12 @@ const App = () => {
     const [year, setYear] = useState(2022);
     const [zip, setZip] = useState(10001);
     const [modelList, setModelList] = useState([]);
+    let user = false;
 
-    console.log('make:', make, 'modelList:', modelList);
+    let TOKEN = window.location.href;
+    TOKEN = TOKEN.slice(TOKEN.indexOf('=')+1);
+    console.log('this is token:',TOKEN);
+
     const updateMake = (e) => {
       setMake(e);
       if (e === 'honda') {
@@ -35,7 +40,7 @@ const App = () => {
       if (e === 'tesla') {
         setModelList([
           { value: 'model 3', label: 'Model 3' },
-          { value: 'model y', label: 'model Y' },
+          { value: 'model y', label: 'Model Y' },
         ]);
       }
       if (e === 'ford') {
@@ -74,12 +79,13 @@ const App = () => {
     
     return (
     <div id='app'>
-        <MainContainer />
         <Routes>
+
             <Route
-                exact path="/"
-                element={
-                <div>
+                exact path={`/`}
+                element={ 
+                  <div>
+                    <MainContainer TOKEN={TOKEN}/>
                     <SearchBar 
                       updateMake={updateMake}
                       updateYear={updateYear}
@@ -97,12 +103,24 @@ const App = () => {
                 </div>
             }
             />
+
             <Route
                 exact path="/wishlist"
-                element={
-                <Wishlist />
-            }
+                element={ !user ? 
+              <div>
+                <MainContainer TOKEN={TOKEN}/>
+                <Wishlist /> 
+              </div>   
+                : <Navigate to='/'/>
+              }
             />
+
+            <Route
+                exact path="/login"
+                element={ user ? <Navigate to={`/?tok=${TOKEN}`}/> : <Login/>
+              }
+            />
+
         </Routes>
     </div>
 )};

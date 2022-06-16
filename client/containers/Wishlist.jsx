@@ -31,9 +31,8 @@ export default function Wishlist() {
       .catch((err) => console.log('Error in Wishlist.jsx', err));
   }, [deleted]);
   console.log('data coming back from our server', wishList);
-  return (
-
-    <>
+  return (    
+      <>
         <Select 
           label="Filter: "
           placeholder="Relevance"
@@ -55,6 +54,7 @@ export default function Wishlist() {
           justifyContent: 'space-evenly',
         }}
       >
+      {/* <div className='wishlist-div1'> */}
         <WishlistCardsList
           carsArr={wishList}
           name={'Wishlist'}
@@ -63,5 +63,5 @@ export default function Wishlist() {
         />
       </div>
     </>
-  );
+  )
 }

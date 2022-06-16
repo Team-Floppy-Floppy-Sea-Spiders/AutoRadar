@@ -1,3 +1,6 @@
+require('dotenv').config();
+const { ConstructionOutlined } = require('@mui/icons-material');
+const { default: axios } = require('axios');
 const express = require('express');
 const pgController = require('../controllers/pgController');
 const wishlistController = require('../controllers/wishlistController');
@@ -17,6 +20,10 @@ router.get(
     })
 );
 
+// router.get(('/'), (req, res) => {
+//   return res.redirect('/login');
+// })
+
 // router to POST to wishlist once user clicks on the favorites icon
 router.post('/wishlist', wishlistController.addWishlistItem, (req, res) =>
   res.status(200).json(res.locals.body)
@@ -33,6 +40,30 @@ router.delete(
   wishlistController.deleteWishlistItem,
   (req, res) => res.status(200).json('Your car has been deleted')
 );
+
+// Get request to github O-auth
+router.get('/auth', (req, res) => {
+  res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`)
+})
+
+// GET Request to receive the code, then POST request with the code, client ID, and secret to receive Token
+router.get('/oauth-callback', ({ query: { code }}, res) => {
+  const body = {
+    client_id: process.env.GITHUB_CLIENT_ID,
+    client_secret: process.env.GITHUB_SECRET,
+    code,
+  }
+  const opts = { headers: {accept: 'application/json'} }
+  axios.post('https://github.com/login/oauth/access_token', body, opts)
+  .then((res) => res.data.access_token)
+  .then((token) => {
+    console.log('My token: ', token);
+    res.redirect(`/?tok=${token}`)
+  })
+  .catch((err) => res.status(500).json({ err: err.message }));
+});
+
+
 
 //router.post('/dataDisplay', pgController.getCarsComData, pgController.insertCarsComData)
 

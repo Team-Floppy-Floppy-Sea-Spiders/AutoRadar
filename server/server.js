@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require('path');
 const express = require('express');
 const cors = require('cors')
@@ -16,7 +17,10 @@ const PORT = 3000;
 /**
  * define route handlers
  */
+
+
 app.use('/api', apiRouter);
+
 
 app.use('*', (req, res) => res.status(404).send('Woops! Page not found!'));
 
