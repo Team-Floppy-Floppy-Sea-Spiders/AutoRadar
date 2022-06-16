@@ -40,7 +40,7 @@ const App = () => {
       if (e === 'tesla') {
         setModelList([
           { value: 'model 3', label: 'Model 3' },
-          { value: 'model y', label: 'model Y' },
+          { value: 'model y', label: 'Model Y' },
         ]);
       }
       if (e === 'ford') {
