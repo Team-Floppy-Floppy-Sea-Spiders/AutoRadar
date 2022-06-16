@@ -7,7 +7,7 @@ import { IconBrandGithub } from '@tabler/icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const MainContainer = () => {
+const MainContainer = ({TOKEN}) => {
 
     const [value, setValue] = React.useState(0);
 
@@ -19,7 +19,7 @@ const MainContainer = () => {
         <>
         <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
           <Tabs value={value} onChange={handleChange} centered>
-            <Link to="/">
+            <Link to={`/?tok=${TOKEN}`}>
               <Tab label="Home Page" />
             </Link>
             <Link to={'/wishlist'}>

@@ -6,6 +6,9 @@ import defaultPic from '../assets/default.png';
 import profile from '../assets/profile.png';
 
 const Login = () => {
+
+
+    
     return (
         <>
 
@@ -21,7 +24,6 @@ const Login = () => {
 
             <Button
                 component="a"
-                target="_blank"
                 rel="noopener noreferrer"
                 href="/api/auth"
                 leftIcon={<IconBrandGithub size={25} />}

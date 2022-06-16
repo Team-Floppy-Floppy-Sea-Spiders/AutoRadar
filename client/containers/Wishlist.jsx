@@ -22,8 +22,7 @@ export default function Wishlist() {
   //         vehicleObj.date = actualDate;
   return (
     <>
-      <div className='wishlist-div1'
-      >
+      <div className='wishlist-div1'>
         <WishlistCardsList
           carsArr={wishList}
           name={'Wishlist'}

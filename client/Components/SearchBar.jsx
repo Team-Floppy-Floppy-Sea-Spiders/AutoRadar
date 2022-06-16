@@ -1,8 +1,10 @@
 import React from 'react';
+import {useLocation} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
-import { Select } from '@mantine/core';
+import { LoadingButton } from '@mui/lab';
+import { Select, TextInput } from '@mantine/core';
 
 
 
@@ -15,6 +17,12 @@ export default function SearchBar({
   updateZip,
   fetching,
 }) {
+
+  const [loading, setLoading] = React.useState(true);
+  function handleClick() {
+    setLoading(true);
+  }
+
   return (
     <Box
       component='form'
@@ -41,28 +49,46 @@ export default function SearchBar({
           { value: 'audi', label: 'Audi' },
         ]}
         onChange={updateMake}
+        required
+        size='lg'
       />
       <Select
         label='Model'
         placeholder='Select Model'
         data={modelList}
         onChange={updateModel}
+        required
+        size='lg'
       />
-      <TextField
+      {/* <TextField
         onChange={updateYear}
         id='outlined-basic'
         label='Minimum Year'
         variant='outlined'
-      />
-      <TextField
+      /> */}
+      {/* <TextField
         onChange={updateZip}
         id='outlined-basic'
         label='Zip'
         variant='outlined'
+      /> */}
+      <TextInput
+        onChange={updateYear}
+        placeholder="Type Year"
+        label="Minimum Year"
+        size='lg'
       />
+      <TextInput
+        onChange={updateZip}
+        placeholder="Type ZipCode"
+        label="Zip"
+        size='lg'
+      />
+
       <Button variant='contained' color='success' onClick={fetching}>
         Search
       </Button>
+
     </Box>
   );
 }
