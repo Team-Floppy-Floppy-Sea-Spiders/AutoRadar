@@ -49,7 +49,6 @@ export default function Wishlist() {
             { value: 'yearoldest', label: 'Year - Oldest' },
           ]}
         />
-  
       <div
         style={{
           display: 'flex',
