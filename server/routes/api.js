@@ -20,6 +20,10 @@ router.get(
     })
 );
 
+// router.get(('/'), (req, res) => {
+//   return res.redirect('/login');
+// })
+
 // router to POST to wishlist once user clicks on the favorites icon
 router.post('/wishlist', wishlistController.addWishlistItem, (req, res) =>
   res.status(200).json(res.locals.body)
@@ -54,7 +58,7 @@ router.get('/oauth-callback', ({ query: { code }}, res) => {
   .then((res) => res.data.access_token)
   .then((token) => {
     console.log('My token: ', token);
-    res.redirect(`/home/?tok=${token}`)
+    res.redirect(`/?tok=${token}`)
   })
   .catch((err) => res.status(500).json({ err: err.message }));
 });

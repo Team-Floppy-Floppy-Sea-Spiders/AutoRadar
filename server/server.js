@@ -21,6 +21,7 @@ const PORT = 3000;
 
 app.use('/api', apiRouter);
 
+
 app.use('*', (req, res) => res.status(404).send('Woops! Page not found!'));
 
 // global error handler

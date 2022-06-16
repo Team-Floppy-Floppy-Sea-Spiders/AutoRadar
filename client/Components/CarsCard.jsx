@@ -28,7 +28,7 @@ export default function CarsCard(props) {
   }
 
   return (
-    <Card sx={{ width: 1000 }}>
+    <Card className='card-material' sx={{ width: 1000 }}>
       <CardActionArea>
         <CardMedia
           component='img'

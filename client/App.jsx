@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import MainContainer from './containers/MainContainer'
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // import Trends from './containers/Trends';
 import CarsInfo from './containers/CarsInfo';
 import SearchBar from './Components/SearchBar';
@@ -18,7 +18,10 @@ const App = () => {
     const [modelList, setModelList] = useState([]);
     let user = false;
 
-    console.log('make:', make, 'modelList:', modelList);
+    let TOKEN = window.location.href;
+    TOKEN = TOKEN.slice(TOKEN.indexOf('=')+1);
+    console.log('this is token:',TOKEN);
+
     const updateMake = (e) => {
       setMake(e);
       if (e === 'honda') {
@@ -77,11 +80,12 @@ const App = () => {
     return (
     <div id='app'>
         <Routes>
+
             <Route
-                exact path="/home"
-                element={
-                <div>
-                    <MainContainer />
+                exact path={`/`}
+                element={ 
+                  <div>
+                    <MainContainer TOKEN={TOKEN}/>
                     <SearchBar 
                       updateMake={updateMake}
                       updateYear={updateYear}
@@ -99,20 +103,21 @@ const App = () => {
                 </div>
             }
             />
+
             <Route
                 exact path="/wishlist"
-                element={ user ? 
+                element={ !user ? 
               <div>
-                <MainContainer />
+                <MainContainer TOKEN={TOKEN}/>
                 <Wishlist /> 
               </div>   
-                : <Login />
+                : <Navigate to='/'/>
               }
             />
 
             <Route
-                exact path="/"
-                element={ user ? <Navigate to='/home'/> : <Login />
+                exact path="/login"
+                element={ user ? <Navigate to={`/?tok=${TOKEN}`}/> : <Login/>
               }
             />
 
