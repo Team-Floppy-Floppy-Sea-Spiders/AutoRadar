@@ -54,7 +54,7 @@ router.get('/oauth-callback', ({ query: { code }}, res) => {
   .then((res) => res.data.access_token)
   .then((token) => {
     console.log('My token: ', token);
-    res.redirect(`/?tok=${token}`)
+    res.redirect(`/home/?tok=${token}`)
   })
   .catch((err) => res.status(500).json({ err: err.message }));
 });
