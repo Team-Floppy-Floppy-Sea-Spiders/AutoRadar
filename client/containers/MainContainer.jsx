@@ -2,6 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { Button } from '@mantine/core';
+import { IconBrandGithub } from '@tabler/icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -25,7 +27,35 @@ const MainContainer = () => {
             </Link>
           </Tabs>
         </Box>
-        </>
+        <Button
+          component="a"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="/api/auth"
+          leftIcon={<IconBrandGithub size={25} />}
+          styles={(theme) => ({
+            root: {
+              backgroundColor: '#8B949E',
+              position: 'absolute',
+              top: '10px',
+              right: '20px',
+              border: 0,
+              height: 42,
+              paddingLeft: 15,
+              paddingRight: 15,
+              '&:hover': {
+                backgroundColor: theme.fn.darken('#8B949E', 0.15),
+              },
+            },
+            leftIcon: {
+              marginRight: 5,
+            },
+          })}
+      >
+        Login via GitHub
+      </Button>
+
+      </>
     );
 }
 

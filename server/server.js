@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require('path');
 const express = require('express');
 const cors = require('cors')
@@ -16,6 +17,12 @@ const PORT = 3000;
 /**
  * define route handlers
  */
+
+// Get request to github O-auth
+app.get('/auth', (req, res) => {
+  res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`)
+})
+
 app.use('/api', apiRouter);
 
 app.use('*', (req, res) => res.status(404).send('Woops! Page not found!'));
