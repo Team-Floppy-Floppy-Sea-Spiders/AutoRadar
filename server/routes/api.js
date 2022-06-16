@@ -1,5 +1,6 @@
 const express = require('express');
 const pgController = require('../controllers/pgController');
+const wishlistController = require('../controllers/wishlistController');
 const router = express.Router();
 
 // routers to handle requests and invoke middleware functions that get executed by controller
