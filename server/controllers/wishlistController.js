@@ -61,6 +61,8 @@ wishlistController.getWishlistItems = async (req, res, next) => {
 
     return next();
   } catch (error) {
+    return res.locals.body = [];
+    
     return next({
       log: 'Error in wishlistController.getWishlistItems',
       status: 400,
